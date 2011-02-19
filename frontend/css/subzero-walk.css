@@ -1,12 +1,6 @@
-.walkRight {
+.walkRight, .walkLeft {
     -webkit-animation-name: 'subzero-walk-step-key';
     -webkit-animation-timing-function: step-start;
-}
-
-.walkLeft {
-    -webkit-animation-name: 'subzero-walk-step-key';
-    -webkit-animation-timing-function: step-start;
-    -webkit-transform: scaleX(-1) translate(-36px, 0);
 }
 
 @-webkit-keyframes 'subzero-walk-step-key' {

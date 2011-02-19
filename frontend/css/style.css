@@ -22,15 +22,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     left: 30px;
 }
 
-/*.animated {*/
-	/*-webkit-animation: animacja 2s infinite*/
-/*} */
-
-/*.flip {*/
-    /*-webkit-transform: scaleX(-1) translate(-36px, 0);*/
-/*}*/
-
-.walkLeft{
-    -webkit-animation: subzeroWalking 2s infinite;
+.left{
     -webkit-transform: scaleX(-1) translate(-36px, 0);
 }

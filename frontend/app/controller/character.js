@@ -11,7 +11,10 @@ app.core.Object.define("app.controller.Character", {
 		
 		runEvent: function(e) {
             var state = fsm.requestState()
-            if()
+            if(_model.directionLeft){
+                // he's moving left
+                // addClass('left')
+            }
 			// sprawdzic w maszynie stanow czy mozna
 		},
 		
