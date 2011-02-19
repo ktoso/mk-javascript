@@ -6,6 +6,8 @@ app.core.Object.define("app.controller.Fsm", {
     static: {},
     member: {
 		
+		lock: false,
+		
 		character: null,
 		
 		currentState: "init",
