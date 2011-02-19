@@ -1,4 +1,4 @@
-.subzero-walk-step {
+.walkRight, .walkLeft {
     -webkit-animation-name: 'subzero-walk-step-key';
     -webkit-animation-timing-function: step-start;
 }

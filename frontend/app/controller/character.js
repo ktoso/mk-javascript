@@ -9,8 +9,13 @@ app.core.Object.define("app.controller.Character", {
 
 		fsm: null,
 		
-		event: function(e) {
-			//sprawdzic w maszynie stanow czy mozna
+		runEvent: function(e) {
+            var state = fsm.requestState()
+            if(_model.directionLeft){
+                // he's moving left
+                // addClass('left')
+            }
+			// sprawdzic w maszynie stanow czy mozna
 		},
 		
 		_move: function() {

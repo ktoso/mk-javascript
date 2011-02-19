@@ -15,28 +15,28 @@ app.core.Object.define("app.event.Keyboard", {
 
             switch (keyboardEvent.keyCode) {
                 case 37:
-                    eventCode = app.event.Object.LEFT;
+                    eventCode = app.event.Object.ALL_STATES.LEFT;
                     break; 
                 case 38:
-                    eventCode = app.event.Object.UP;
+                    eventCode = app.event.Object.ALL_STATES.JUMP;
                     break; 
                 case 39:
-                    eventCode = app.event.Object.RIGHT;
+                    eventCode = app.event.Object.ALL_STATES.RIGHT;
                     break; 
                 case 40:
-                    eventCode = app.event.Object.DOWN;
+                    eventCode = app.event.Object.ALL_STATES.CROUCH;
                     break; 
                 case 87:
-                    eventCode = app.event.Object.HIGH_PUNCH;
+                    eventCode = app.event.Object.ALL_STATES.HIGH_PUNCH;
                     break; 
                 case 83:
-                    eventCode = app.event.Object.LOW_PUNCH;
+                    eventCode = app.event.Object.ALL_STATES.LOW_PUNCH;
                     break; 
                 case 81:
-                    eventCode = app.event.Object.HIGH_KICK;
+                    eventCode = app.event.Object.ALL_STATES.HIGH_KICK;
                     break; 
                 case 65:
-                    eventCode = app.event.Object.LOW_KICK;
+                    eventCode = app.event.Object.ALL_STATES.LOW_KICK;
                     break; 
             }
 
