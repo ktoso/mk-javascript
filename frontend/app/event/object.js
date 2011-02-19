@@ -6,6 +6,7 @@ app.core.Object.define("app.event.Object", {
     },
     static: {
         ALL_STATES: {
+            DEFAULT: 'standing',
             LEFT: 'walkLeft',
             JUMP: 'jump',
             RIGHT: 'walkRight',
