@@ -5,7 +5,10 @@ app.core.Object.define("app.controller.Fsm", {
         
 		this._init();
     },
-    static: {},
+    static: {
+		BUSY: 1,
+		CHANGE_OK: 2,
+	},
     member: {
 		lock: false,
 		
@@ -31,8 +34,21 @@ app.core.Object.define("app.controller.Fsm", {
 			}
 		},
 		
+		_unlock: function() {
+			this.lock = false;
+		}
+		
+		_lock: function(time) {
+			this.lock = true;
+			setTimeout(this._unlock, time);
+		},
+		
 		requestState: function(newState) {
+			if(lock) return this.BUSY;
 			
+			this.states[newState].activate();
+			this.currentState = newState;
+			return this.CHANGE_OK;
 		},
 		
 		getState: function() {
@@ -40,7 +56,8 @@ app.core.Object.define("app.controller.Fsm", {
 		},
 		
 		forceState: function(newState) {
-			
+			this.states[newState].activate();
+			this.currentState = newState;			
 		}
 	}
 });
