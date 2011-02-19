@@ -20,7 +20,12 @@ app.core.Object.define("app.controller.Arena", {
 		},
 		
 		drawBackground: function() {
-			// stworzyc element i wpakowac w konterener
+			var arenaDiv = document.createElement('div');
+			arenaDiv.className = "arena-background";
+			var gameContener = document.getElementById("gamecontainer");
+		
+			gameContener.appendChild(arenaDiv);
+		
 		}			
 	}
 });
