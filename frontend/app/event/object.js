@@ -5,14 +5,16 @@ app.core.Object.define("app.event.Object", {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
     },
     static: {
-        LEFT: 'walkLeft',
-        JUMP: 'jump',
-        RIGHT: 'walkRight',
-        CROUCH: 'crouch',
-        HIGH_PUNCH: 'highPunch',
-        LOW_PUNCH: 'lowPunch',
-        HIGH_KICK: 'highKick',
-        LOW_KICK: 'lowKick'
+        ALL_STATES: {
+            LEFT: 'walkLeft',
+            JUMP: 'jump',
+            RIGHT: 'walkRight',
+            CROUCH: 'crouch',
+            HIGH_PUNCH: 'highPunch',
+            LOW_PUNCH: 'lowPunch',
+            HIGH_KICK: 'highKick',
+            LOW_KICK: 'lowKick'
+        }
     },
     member: {
     }
