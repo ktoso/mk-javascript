@@ -11,13 +11,10 @@
 	<script src="lib/jquery-1.4.4.js" type="text/javascript"></script>
 </head>
 <body>
-    <div id="wrap">
-		<div class="character animated subzero-walk subzero-walk-linear">
-		</div>
-	</div>
-
+    <div class="character animated subzero-walk subzero-walk-linear" id="subzero"></div>
+	<div id="log"></div>
 	<script>
-		var subzero = $("#wrap");
+		var subzero = $("#subzero");
 		
 		var lock = false;
 		
@@ -38,7 +35,8 @@
 		  if (key  == '40') {subzero.animate({ top: "+=" + speed}, delay, 'linear', unlock);}
 		  if (key  == '37') {subzero.animate({ left: "-=" + speed}, delay, 'linear', unlock); subzero.addClass("flip");}
 		  if (key  == '39') {subzero.animate({ left: "+=" + speed}, delay, 'linear', unlock); subzero.removeClass("flip");}
-
+		  
+		  $("#log").html(key);
 		});			
 		
 	</script>

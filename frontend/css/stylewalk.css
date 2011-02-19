@@ -23,7 +23,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 }
 
 .animated {
-	-webkit-animation: animacja 2s infinite
+	-webkit-animation-name : walk;
+	-webkit-animation-iteration-count : infinite;
+	-webkit-animation-duration : 1s;
+	-webkit-animation-timing-function: linear;
+	
+	position: relative;
 } 
 
 .flip {
