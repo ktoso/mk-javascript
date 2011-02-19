@@ -4,5 +4,17 @@ app.core.Object.define("app.model.state", {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
     },
     static: {},
-    member: {}
+    member: {
+		state: "default",
+		
+		lockTime: 500,
+		
+		cssClass: "default",
+		
+		music: "",
+		
+		playSound: function() {
+			//todo
+		}			
+	}
 });
