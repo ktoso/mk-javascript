@@ -3,10 +3,6 @@ app.core.Object.define("app.event.Keyboard", {
     constructor: function (keyboardEvent) {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
 
-        if (!(keyboardEvent instanceof KeyboardEvent)) {
-            throw new Error("keyboardEvent shloud be instance of KeyboardEvent"); 
-        }
-        
         this._init(keyboardEvent);
 
     },
