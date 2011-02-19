@@ -18,13 +18,13 @@ app.core.Object.define("app.event.Keyboard", {
                     eventCode = app.event.Object.LEFT;
                     break; 
                 case 38:
-                    eventCode = app.event.Object.UP;
+                    eventCode = app.event.Object.JUMP;
                     break; 
                 case 39:
                     eventCode = app.event.Object.RIGHT;
                     break; 
                 case 40:
-                    eventCode = app.event.Object.DOWN;
+                    eventCode = app.event.Object.CROUCH;
                     break; 
                 case 87:
                     eventCode = app.event.Object.HIGH_PUNCH;
