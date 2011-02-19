@@ -4,5 +4,20 @@ app.core.Object.define("app.model.state.lowKick", {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
     },
     static: {},
-    member: {}
+    member: {
+		state: "lowKick",
+		
+		lockTime: 1000,
+		
+		possibleTransistions: [
+			'walkRight',
+			'walkLeft',
+			'jump',
+			'crouch',
+			'highPunch',
+			'lowPunch',
+			'highKick',
+			'lowKick'
+		]
+	}
 });

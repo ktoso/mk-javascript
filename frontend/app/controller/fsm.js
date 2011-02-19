@@ -36,7 +36,7 @@ app.core.Object.define("app.controller.Fsm", {
 		
 		_unlock: function() {
 			this.lock = false;
-		}
+		},
 		
 		_lock: function(time) {
 			this.lock = true;

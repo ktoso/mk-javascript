@@ -11,12 +11,12 @@ app.core.Object.define("app.model.state", {
 		
 		lockTime: 500,
 		
-		cssClass: "default",
+		nextState: "default",
 		
 		music: "",
 		
 		activate: function(fsm) {
-			fsm._lock(this.lockTime);
+			if(this.lockTime) fsm._lock(this.lockTime);
 			
 			this.active = true;
 		},
