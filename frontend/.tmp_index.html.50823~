@@ -6,7 +6,9 @@
     <title>Index</title>
     
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
-	
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8" src="socket.io/socket.io.js"></script> 
     <script type="text/javascript" charset="utf-8" src="lib/jquery-1.4.4.js"></script>
 	<script type="text/javascript" charset="utf-8" src="lib/mxhr.js"></script>
 
@@ -19,23 +21,19 @@
     <script type="text/javascript" charset="utf-8" src="app/controller/object.js"> </script>
     <script type="text/javascript" charset="utf-8" src="app/controller/game.js"> </script>
     <script type="text/javascript" charset="utf-8" src="app/controller/character.js"> </script>
-	<script type="text/javascript" charset="utf-8" src="app/controller/fsm.js"> </script>
     <script type="text/javascript" charset="utf-8" src="app/controller/arena.js"> </script>
 
     <script type="text/javascript" charset="utf-8" src="app/model/object.js"> </script>
     <script type="text/javascript" charset="utf-8" src="app/model/character.js"> </script>
-	<script type="text/javascript" charset="utf-8" src="app/model/fsm.js"> </script>
     <script type="text/javascript" charset="utf-8" src="app/model/arena.js"> </script>
 
     <script type="text/javascript" charset="utf-8" src="app/view/object.js"> </script>
     <script type="text/javascript" charset="utf-8" src="app/view/arena.js"> </script>
-	<script type="text/javascript" charset="utf-8" src="app/view/character.js"> </script>
 
-    <script type="text/javascript" charset="utf-8" src="bootstrap.js"> </script>	
-</head>
-<body>
-	<div id="gamecontainer">
-		
-	</div>    
+    <script type="text/javascript" charset="utf-8" src="app/view/character/object.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="app/view/character/subzero.js"> </script>
+
+    <script type="text/javascript" charset="utf-8" src="bootstrap.js"> </script>
+    
 </body>
 </html>
