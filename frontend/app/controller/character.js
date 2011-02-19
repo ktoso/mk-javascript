@@ -8,14 +8,14 @@ app.core.Object.define("app.controller.Character", {
     member: {
 
 		fsm: null,
-		
+
+
+
 		runEvent: function(e) {
-            var state = fsm.requestState()
-            if(_model.directionLeft){
-                // he's moving left
-                // addClass('left')
-            }
-			// sprawdzic w maszynie stanow czy mozna
+            var state = fsm.requestState(e);
+
+            _setupDirection();
+            // sprawdzic w maszynie stanow czy mozna
 		},
 		
 		_move: function() {
@@ -25,6 +25,14 @@ app.core.Object.define("app.controller.Character", {
 		_jump: function() {
 			
 		},
+
+        _setupDirection: function setupDirection() {
+            if (_model.directionLeft) {
+                _view.addClass(_model.id, 'left');
+            } else {
+                _view.removeClass(_model.id, 'right')
+            }
+        }
 	}
 });
 

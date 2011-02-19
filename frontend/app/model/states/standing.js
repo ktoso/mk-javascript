@@ -1,18 +1,18 @@
-app.core.Object.define("app.model.state.crouch", {
+app.core.Object.define("app.model.state.standing", {
     extend: app.model.state,
     constructor: function () {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
     },
     static: {},
     member: {
-		state: "crouch",
+		state: "standing",
 		
-		lockTime: 500,
+		lockTime: 0,
 		
 		possibleTransistions: [
 			'walkRight',
 			'walkLeft',
-			//'jump',
+			'jump',
 			'crouch',
 			'highPunch',
 			'lowPunch',

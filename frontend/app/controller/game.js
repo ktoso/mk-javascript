@@ -9,29 +9,32 @@ app.core.Object.define("app.controller.Game", {
 		arena: null,
 		character: null,
 		fsm: null,
-		
+
 		input: null,
-		
+
 		run: function() {
 			this.arena = new app.controller.Arena(new app.model.Arena(), new app.view.Arena());
 			this.arena.drawBackground();
-			
+
 			this.fsm = new app.controller.Fsm(new app.model.Fsm());
-			this.character = new app.controller.Character(new app.model.Character(), new app.view.Character(), this.fsm);
-			this.fsm.setCharacter(this.character);
-			
+
+            // create all players
+            var playerId = 1
+            this.character = new app.controller.Character(new app.model.Character('character' + playerId), new app.view.Character(), this.fsm);
+            this.fsm.setCharacter(this.character);
+
 			this.bindInput();
 		},
-		
+
 		bindInput: function() {
 			$(window).keydown(function(event) {
-			  var key = event.keyCode;	
-			
+			  var key = event.keyCode;
+
 			  if(key >= 37 && key <= 40) {event.preventDefault();}
 
 			  this.input = new app.event.Keyboard(event);
 			  this.character.runEvent(this.input.getCode());
-			});				
+			});
 		},
 	}
 });

@@ -4,5 +4,20 @@ app.core.Object.define("app.model.state.walkLeft", {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
     },
     static: {},
-    member: {}
+    member: {
+		state: "walkLeft",
+		
+		lockTime: 0,
+		
+		possibleTransistions: [
+			'walkRight',
+			'walkLeft',
+			'jump',
+			'crouch',
+			'highPunch',
+			'lowPunch',
+			'highKick',
+			'lowKick'
+		]
+	}
 });
