@@ -1,3 +1,5 @@
 .idea
 *.orig
 *.iml
+.bak*
+*.bak
