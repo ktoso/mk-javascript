@@ -6,6 +6,12 @@ app.core.Object.define("app.model.Character", {
     },
     static: {},
     member: {
+        health: 100,
+        state: null,
 
+        posX: null,
+        posY: null,
+
+        directionLeft: true, //true for left, false for right
     }
 });
