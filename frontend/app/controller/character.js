@@ -9,10 +9,8 @@ app.core.Object.define("app.controller.Character", {
 
 		fsm: null,
 
-
-
 		runEvent: function(e) {
-            var state = fsm.requestState(e);
+            var state = this.fsm.requestState(e);
 
             _setupDirection();
             // sprawdzic w maszynie stanow czy mozna

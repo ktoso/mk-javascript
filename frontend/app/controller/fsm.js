@@ -22,16 +22,39 @@ app.core.Object.define("app.controller.Fsm", {
 			this.character = character;
 		},
 		
-		_init: function() {
-			//tutaj inicjalizacje wszystkich stanow
-			var obj = new app.event.Object();
-			var lastScript = document.getElementsByTagName("script");
-			for(var i in obj.ALL_STATES){
-			    var script = createElement("script");
-			    script.src = "app/model/states/" + i + ".js";
-			    lastScript.parentNode.appendChild(script);
-				this._states[i] = new app.model.states[i]();
+		_loadStates: function() {
+			var ALL_STATES = app.event.Object.ALL_STATES;
+			
+			for (var i in ALL_STATES) {
+				var str = 'this._states.' + ALL_STATES[i] + ' = new app.model.state.' + ALL_STATES[i] + '()';
+				eval(str);
 			}
+		},
+		
+		_init: function() {
+			var ALL_STATES = app.event.Object.ALL_STATES;
+			var counter = 0;
+			//tutaj inicjalizacje wszystkich stanow
+			var lastScript = document.getElementsByTagName("script");
+			for(var i in ALL_STATES){
+				counter++;
+				console.log('loading state class: ' + ALL_STATES[i]); 
+				console.log('to load: ' + counter + ' scripts');
+			    var script = document.createElement("script");
+				script.type = 'text/javascript';
+			    script.src = "app/model/state/" + ALL_STATES[i] + ".js";
+				script.scope = this;
+				script.onload = function() {
+					counter--;
+					console.log('to load: ' + counter + ' scripts');
+					if(counter == 0){
+						//all scripts loaded
+						this.scope._loadStates();
+					}					
+				};
+			    lastScript[0].parentNode.appendChild(script);
+			}
+
 		},
 		
 		_unlock: function() {
@@ -44,11 +67,13 @@ app.core.Object.define("app.controller.Fsm", {
 		},
 		
 		requestState: function(newState) {
-			if(lock) return this.BUSY;
+			console.log(newState);
+			console.log(this._states);
+			if(this.lock) return app.controller.Fsm.BUSY;
 			
-			this.states[newState].activate();
+			this._states[newState].activate();
 			this.currentState = newState;
-			return this.CHANGE_OK;
+			return app.controller.Fsm.CHANGE_OK;
 		},
 		
 		getState: function() {
@@ -56,7 +81,7 @@ app.core.Object.define("app.controller.Fsm", {
 		},
 		
 		forceState: function(newState) {
-			this.states[newState].activate();
+			this._states[newState].activate();
 			this.currentState = newState;			
 		}
 	}

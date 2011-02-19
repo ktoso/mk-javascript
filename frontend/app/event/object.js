@@ -5,6 +5,7 @@ app.core.Object.define("app.event.Object", {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
     },
     static: {
+		DEFAULT: 'standing',
         ALL_STATES: {
             DEFAULT: 'standing',
             LEFT: 'walkLeft',
@@ -17,6 +18,5 @@ app.core.Object.define("app.event.Object", {
             LOW_KICK: 'lowKick'
         }
     },
-    member: {
-    }
+    member: {}
 });

@@ -5,11 +5,7 @@ app.core.Object.define("app.model.state", {
     },
     static: {},
     member: {
-		state: "default",
-		
 		active: false,
-		
-		lockTime: 500,
 		
 		nextState: "default",
 		

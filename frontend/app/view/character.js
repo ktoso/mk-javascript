@@ -3,14 +3,14 @@ app.core.Object.define("app.view.Character", {
     constructor: function (model)
     {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
-        _init();
+        this._init();
     },
     static: {},
     member: {
         id: null, // DOM ID
 
         _init: function(){
-            this.id = 'character-' + ;
+            this.id = 'character-1';
         }
     }
 });
