@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 .walkRight, .walkLeft {
+=======
+.subzero-walk-step {
+>>>>>>> c7d70fe7574489c960055a065873a5e892c9fc16
     -webkit-animation-name: 'subzero-walk-step-key';
     -webkit-animation-timing-function: step-start;
 }

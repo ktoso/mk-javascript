@@ -23,14 +23,33 @@ app.core.Object.define("app.controller.Character", {
 			gameContainer.appendChild(character);
 		},
 
-		runEvent: function(e) {
-            var state = this.fsm.requestState(e);
-			if(app.controller.Fsm.CHANGE_OK) {
+		runEvent: function(state) {
+            var status = this.fsm.requestState(state);
+			if(status = app.controller.Fsm.CHANGE_OK) {
 				
 				//wywolac co trzeba bo stan udalo sie zmienic
-				
-	            this._setupDirection(state);
-	            // sprawdzic w maszynie stanow czy mozna				
+	            
+				switch(state) {
+					case app.event.Object.DEFAULT:
+					 	break;
+					case app.event.Object.LEFT:
+					case app.event.Object.RIGHT:
+						this._setupDirection(state);
+						this._move(state);
+					 	break;
+					case app.event.Object.JUMP:
+					 	break;
+					case app.event.Object.CROUCH:
+					 	break;
+					case app.event.Object.HIGH_PUNCH:
+					 	break;
+					case app.event.Object.LOW_PUNCH:
+					 	break;
+					case app.event.Object.HIGH_KICK:
+					 	break;
+					case app.event.Object.LOW_KICK:
+					 	break;	
+				}			
 			};
 
 		},
