@@ -19,10 +19,11 @@ app.core.Object.define("app.controller.Character", {
 			arenaDiv.className = "character standing";
             arenaDiv.id = this._model.id;
 			var gameContener = document.getElementById("gamecontainer");
-		                                               1
+		                                               
 			gameContener.appendChild(arenaDiv);	
 			
-			window.setTimeout(this.update);		
+			window.setTimeout(this.update.bind(this), 10);	
+			console.log("sdfsdfsdfsdf");	
 		},
 
 		runEvent: function(e) {
@@ -44,10 +45,17 @@ app.core.Object.define("app.controller.Character", {
 			
 		},
 
-		udpate: function() {
-		if(this.model.state == 0)
-			this.model.posX
-			
+		update: function(model) {
+			console.log(this._model.state);
+		if(this._model.state == app.event.Object.ALL_STATES.RIGHT)
+			this._model.posX++;
+		if(this._model.state == app.event.Object.ALL_STATES.LEFT)
+			this._model.posX--;
+		$("#character").css({left: this._model.posX});
+		
+		window.setTimeout(this.update.bind(this), 10);	
+		
+		console.log(this._model.posX);			
 		},
 
         _setupDirection: function setupDirection(state) {

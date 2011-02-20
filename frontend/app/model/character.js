@@ -10,10 +10,10 @@ app.core.Object.define("app.model.Character", {
         id: null,
 
         health: 100,
-        state: null,
+        state: "standing",
 
-        posX: null,
-        posY: null,
+        posX: 30,
+        posY: 195,
 
         directionLeft: true, // true for left, false for right
     }
