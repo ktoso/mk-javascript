@@ -31,8 +31,8 @@ app.core.Object.define("app.controller.Character", {
 			
 			window.setTimeout(this.update.bind(this), 10);	
 			
-			server.on('message', function(data) {
-				runEvent(data.state);
+			this.server.on('message', function(data) {
+				this.runEvent(data.state);
 				console.log("send to server on connect");
 			});				
 		},
