@@ -13,6 +13,8 @@ app.core.Object.define("app.model.state", {
 		
 		fsm: null,
 		
+		queueingAllowed: true,
+		
 		activate: function(fsm) {
 			if(this.lockTime) fsm._lock(this.lockTime, this.nextState);
 			this.active = true;
