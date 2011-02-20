@@ -20,7 +20,9 @@ app.core.Object.define("app.controller.Character", {
             arenaDiv.id = this._model.id;
 			var gameContener = document.getElementById("gamecontainer");
 		                                               1
-			gameContener.appendChild(arenaDiv);			
+			gameContener.appendChild(arenaDiv);	
+			
+			window.setTimeout(this.update);		
 		},
 
 		runEvent: function(e) {
@@ -35,10 +37,16 @@ app.core.Object.define("app.controller.Character", {
 		},
 		
 		_move: function() {
-			
+
 		},
 		
 		_jump: function() {
+			
+		},
+
+		udpate: function() {
+		if(this.model.state == 0)
+			this.model.posX
 			
 		},
 
