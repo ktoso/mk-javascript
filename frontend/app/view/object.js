@@ -19,10 +19,12 @@ app.core.Object.define("app.view.Object", {
             doc.head.appendChild(link);
         },
         removeClass: function (el, name) {
-           $(el).removeClass(name); 
+           console.log("removeClass " + name + " from " + el);
+           $('#' + el).removeClass(name);
         },
         addClass: function (el, name) {
-           $(el).addClass(name); 
+           console.log("addClass " + name + " to " + el);
+           $('#' + el).addClass(name);
         }
     }
 });

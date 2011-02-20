@@ -69,9 +69,17 @@ app.core.Object.define("app.controller.Fsm", {
 			console.log('FSM: ok, change. Previous state: ' + this.currentState + ', new state: ' + newState);
 			this._states[newState].activate(this);
 			this.currentState = newState;
+
+            // todo refactor this
+            if (newState == app.event.Object.ALL_STATES.LEFT) {
+                this.character._model.directionLeft = true;
+            } else if (newState == app.event.Object.ALL_STATES.RIGHT) {
+                this.character._model.directionLeft = false;
+            }
+
 			return app.controller.Fsm.CHANGE_OK;
 		},
-		
+
 		getState: function() {
 			return this.currentState;
 		},
