@@ -5,20 +5,23 @@ app.core.Object.define("app.model.state", {
     },
     static: {},
     member: {
-		state: "default",
-		
 		active: false,
-		
-		lockTime: 500,
 		
 		nextState: "default",
 		
 		music: "",
 		
+		fsm: null,
+		
 		activate: function(fsm) {
-			if(this.lockTime) fsm._lock(this.lockTime);
-			
+			if(this.lockTime) fsm._lock(this.lockTime, this.nextState);
 			this.active = true;
+		},
+		
+		deactivate: function(fsm) {
+			this.active = false;
+			fsm.lock = false;
+			app.controller.Fsm.prototype.forceState.bind(fsm, this.nextState);
 		},
 		
 		playSound: function() {

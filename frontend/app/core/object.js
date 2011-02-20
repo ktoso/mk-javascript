@@ -94,6 +94,7 @@ app.core.Object.static = function (targetConstructor /* ...mixins... */) {
             if (targetConstructor[member])  {
                 console.warn('Overrite memeber "' + member + '" which currently exists in prototype.');
             }
+			
             targetConstructor[member] = static[member]; 
         }
     }

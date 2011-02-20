@@ -5,7 +5,6 @@ app.core.Object.define("app.controller.Game", {
     },
     static: {},
     member: {
-		// dopisać tworzenie obiektow
 		arena: null,
 		character: null,
 		fsm: null,
@@ -27,13 +26,16 @@ app.core.Object.define("app.controller.Game", {
 		},
 
 		bindInput: function() {
+			var scope = this;
+
 			$(window).keydown(function(event) {
+
 			  var key = event.keyCode;
 
 			  if(key >= 37 && key <= 40) {event.preventDefault();}
 
-			  this.input = new app.event.Keyboard(event);
-			  this.character.runEvent(this.input.getCode());
+			  scope.input = new app.event.Keyboard(event);
+			  scope.character.runEvent(scope.input.getCode());
 			});
 		},
 	}
