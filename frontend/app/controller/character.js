@@ -3,6 +3,9 @@ app.core.Object.define("app.controller.Character", {
     constructor: function (model, view, fsm) {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
         this.fsm = fsm;
+		
+		this._model = model;
+		this._view = view;
     },
     static: {},
     member: {
@@ -11,9 +14,13 @@ app.core.Object.define("app.controller.Character", {
 
 		runEvent: function(e) {
             var state = this.fsm.requestState(e);
+			if(app.controller.Fsm.CHANGE_OK) {
+				//wywolac co trzeba bo stan udalo sie zmienic
+				
+	            this._setupDirection();
+	            // sprawdzic w maszynie stanow czy mozna				
+			};
 
-            _setupDirection();
-            // sprawdzic w maszynie stanow czy mozna
 		},
 		
 		_move: function() {
@@ -25,10 +32,10 @@ app.core.Object.define("app.controller.Character", {
 		},
 
         _setupDirection: function setupDirection() {
-            if (_model.directionLeft) {
-                _view.addClass(_model.id, 'left');
+            if (this._model.directionLeft) {
+                this._view.addClass(this._model.id, 'left');
             } else {
-                _view.removeClass(_model.id, 'right')
+                this._view.removeClass(this._model.id, 'right')
             }
         }
 	}

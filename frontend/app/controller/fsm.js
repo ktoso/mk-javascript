@@ -38,15 +38,12 @@ app.core.Object.define("app.controller.Fsm", {
 			var lastScript = document.getElementsByTagName("script");
 			for(var i in ALL_STATES){
 				counter++;
-				console.log('loading state class: ' + ALL_STATES[i]); 
-				console.log('to load: ' + counter + ' scripts');
 			    var script = document.createElement("script");
 				script.type = 'text/javascript';
 			    script.src = "app/model/state/" + ALL_STATES[i] + ".js";
 				script.scope = this;
 				script.onload = function() {
 					counter--;
-					console.log('to load: ' + counter + ' scripts');
 					if(counter == 0){
 						//all scripts loaded
 						this.scope._loadStates();
@@ -56,22 +53,21 @@ app.core.Object.define("app.controller.Fsm", {
 			}
 
 		},
-		
-		_unlock: function() {
-			this.lock = false;
-		},
-		
-		_lock: function(time) {
+
+		_lock: function(time, nextState) {
 			this.lock = true;
-			setTimeout(this._unlock, time);
+			setTimeout(app.model.state.prototype.deactivate.bind(this._states[nextState], this), time);
 		},
 		
 		requestState: function(newState) {
-			console.log(newState);
-			console.log(this._states);
-			if(this.lock) return app.controller.Fsm.BUSY;
+			console.log('FSM: requested state: ' + newState);
+			if (this.lock) {
+				console.log('FSM: busy, no change. Current state: ' + this.currentState);
+				return app.controller.Fsm.BUSY;
+			}
 			
-			this._states[newState].activate();
+			console.log('FSM: ok, change. Previous state: ' + this.currentState + ', new state: ' + newState);
+			this._states[newState].activate(this);
 			this.currentState = newState;
 			return app.controller.Fsm.CHANGE_OK;
 		},
@@ -81,6 +77,7 @@ app.core.Object.define("app.controller.Fsm", {
 		},
 		
 		forceState: function(newState) {
+			console.log(newState);
 			this._states[newState].activate();
 			this.currentState = newState;			
 		}
