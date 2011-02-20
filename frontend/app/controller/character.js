@@ -72,7 +72,9 @@ app.core.Object.define("app.controller.Character", {
 					case app.event.Object.ALL_STATES.HIGH_KICK:
 					 	break;
 					case app.event.Object.ALL_STATES.LOW_KICK:
-					 	break;	
+					 	break;
+                    case app.event.Object.ALL_STATES.BEING_HIT:
+					 	break;
 				}			
 			};
 
