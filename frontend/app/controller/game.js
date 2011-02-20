@@ -46,7 +46,9 @@ app.core.Object.define("app.controller.Game", {
 			  if(key >= 37 && key <= 40) {event.preventDefault();}
 
 			  scope.input = new app.event.Keyboard(event);
-			  scope.character.runEvent(scope.input.getCode());
+			  var code = scope.input.getCode();
+			  // false if event is not binded to any action
+			  if(code) scope.character.runEvent(code);
 			});
 		},
 	}
