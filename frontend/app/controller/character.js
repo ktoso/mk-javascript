@@ -1,9 +1,9 @@
 app.core.Object.define("app.controller.Character", {
     extend: app.controller.Object,
-    constructor: function (model, view, game) {
+    constructor: function (model, view, game, fsm) {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
         this.server = game.server;
-		this.fsm = game.fsm;
+		this.fsm = fsm;
 		
 		this._model = model;
 		this._view = view;
