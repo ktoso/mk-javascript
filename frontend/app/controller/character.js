@@ -65,16 +65,13 @@ app.core.Object.define("app.controller.Character", {
 		},
 
 		update: function(model) {
-			console.log(this._model.state);
-		if(this._model.state == app.event.Object.ALL_STATES.RIGHT)
-			this._model.posX++;
-		if(this._model.state == app.event.Object.ALL_STATES.LEFT)
-			this._model.posX--;
-		$("#character").css({left: this._model.posX});
-		
-		window.setTimeout(this.update.bind(this), 10);	
-		
-		console.log(this._model.posX);			
+			if(this._model.state == app.event.Object.ALL_STATES.RIGHT)
+				this._model.posX++;
+			if(this._model.state == app.event.Object.ALL_STATES.LEFT)
+				this._model.posX--;
+			$("#" + this._model.id).css({left: this._model.posX});
+			
+			window.setTimeout(this.update.bind(this), 10);		
 		},
 
         _setupDirection: function setupDirection(state) {
