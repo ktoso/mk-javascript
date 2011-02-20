@@ -26,6 +26,7 @@ app.core.Object.define("app.controller.Character", {
 		runEvent: function(e) {
             var state = this.fsm.requestState(e);
 			if(app.controller.Fsm.CHANGE_OK) {
+				
 				//wywolac co trzeba bo stan udalo sie zmienic
 				
 	            this._setupDirection(state);

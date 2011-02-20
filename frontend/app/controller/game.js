@@ -8,7 +8,8 @@ app.core.Object.define("app.controller.Game", {
 		arena: null,
 		character: null,
 		fsm: null,
-
+		server: null,
+		
 		input: null,
 
 		run: function() {
@@ -23,6 +24,15 @@ app.core.Object.define("app.controller.Game", {
             this.fsm.setCharacter(this.character);
 
 			this.bindInput();
+			
+			this._initServer();
+		},
+
+		_initServer: function() {
+			var server = new io.Socket();
+			socket.on('connect', function() {
+				socket.send('hello');
+			});
 		},
 
 		bindInput: function() {
