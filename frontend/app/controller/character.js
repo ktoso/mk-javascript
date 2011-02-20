@@ -6,11 +6,21 @@ app.core.Object.define("app.controller.Character", {
 		
 		this._model = model;
 		this._view = view;
+		
+		this._init();
     },
     static: {},
     member: {
 
 		fsm: null,
+
+		_init: function() {
+			var arenaDiv = document.createElement('div');
+			arenaDiv.className = "character standing";
+			var gameContener = document.getElementById("gamecontainer");
+		
+			gameContener.appendChild(arenaDiv);			
+		},
 
 		runEvent: function(e) {
             var state = this.fsm.requestState(e);
