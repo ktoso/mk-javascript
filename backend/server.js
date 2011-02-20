@@ -44,24 +44,25 @@ socket.on('connection', function(client) {
     var gameEntry = gameObject[client.sessionId] = {};
 
     gameEntry.sessionId = client.sessionId;
-    gameEntry.name      = "subzero";
+    gameEntry.name      = "character"/* jakies id */;
     gameEntry.direction = "right";
-    gameEntry.state    = "stance";
-    gameEntry.hp       = 100;
-    gameEntry.x        = 0;
-    gameEntry.y        = 0;
+    gameEntry.state     = "standing";
+    gameEntry.health    = 100;
+    gameEntry.left      = 30; // left
+    gameEntry.top       = 195; // top
 
     client.on('message', function(data) {
-        //console.log("Action: " + data.action + " sessionId: " + client.sessionId);
+        console.log("Action: " + data.action + " sessionId: " + client.sessionId);
         
         switch (data.action) {
-            case 'walk':
+            case 'walkRight':
+            case 'walkLeft':
                 gameEntry.direction = data.direction;
                 gameEntry.state     = data.action;
-                gameEntry.x     = data.x;
-                gameEntry.y     = data.y;
+                gameEntry.left     = data.left;
+                gameEntry.top     = data.top;
                 break;
-            case 'stance':
+            case 'standing':
                 gameEntry.state = data.action;
                 break;
             case 'punch':
@@ -71,12 +72,12 @@ socket.on('connection', function(client) {
                     if (gameObject.hasOwnProperty(sid)) {
                         var entry = gameObject[sid];
 
-                        if (Math.abs(data.x - entry.x) < 70 && sid != client.sessionId) {
+                        if (Math.abs(data.left - entry.left) < 70 && sid != client.sessionId) {
                             entry.state = "beinghit"; 
-                            entry.hp -= 10;
+                            entry.health -= 10;
 
                             setTimeout(function (entr) {
-                                entr.state = "stance";         
+                                entr.state = "standing";
                                 client.broadcast({gameObject: gameObject}); 
                             }.bind(client, entry), 1000);
                         }

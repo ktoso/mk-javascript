@@ -15,12 +15,12 @@ app.core.Object.define("app.controller.Character", {
 		fsm: null,
 
 		_init: function() {
-			var arenaDiv = document.createElement('div');
-			arenaDiv.className = "character standing";
-            arenaDiv.id = this._model.id;
-			var gameContener = document.getElementById("gamecontainer");
-		                                               1
-			gameContener.appendChild(arenaDiv);			
+			var character = document.createElement('div');
+			character.className = "character standing";
+            character.id = this._model.id;
+			var gameContainer = document.getElementById("gamecontainer");
+
+			gameContainer.appendChild(character);
 		},
 
 		runEvent: function(e) {
