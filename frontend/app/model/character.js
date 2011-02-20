@@ -14,8 +14,6 @@ app.core.Object.define("app.model.Character", {
     },
     static: {},
     member: {
-		remote;
-		
         id: null,
 
         health: 100,
