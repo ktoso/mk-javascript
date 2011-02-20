@@ -17,8 +17,9 @@ app.core.Object.define("app.controller.Character", {
 		_init: function() {
 			var arenaDiv = document.createElement('div');
 			arenaDiv.className = "character standing";
+            arenaDiv.id = this._model.id;
 			var gameContener = document.getElementById("gamecontainer");
-		
+		                                               1
 			gameContener.appendChild(arenaDiv);			
 		},
 
@@ -27,7 +28,7 @@ app.core.Object.define("app.controller.Character", {
 			if(app.controller.Fsm.CHANGE_OK) {
 				//wywolac co trzeba bo stan udalo sie zmienic
 				
-	            this._setupDirection();
+	            this._setupDirection(state);
 	            // sprawdzic w maszynie stanow czy mozna				
 			};
 
@@ -41,11 +42,17 @@ app.core.Object.define("app.controller.Character", {
 			
 		},
 
-        _setupDirection: function setupDirection() {
+        _setupDirection: function setupDirection(state) {
             if (this._model.directionLeft) {
                 this._view.addClass(this._model.id, 'left');
+                this._view.removeClass(this._model.id, 'right');
+
+                console.log('CHAR: moving left');
             } else {
-                this._view.removeClass(this._model.id, 'right')
+                this._view.addClass(this._model.id, 'right');
+                this._view.removeClass(this._model.id, 'left');
+
+                console.log('CHAR: moving right');
             }
         }
 	}
