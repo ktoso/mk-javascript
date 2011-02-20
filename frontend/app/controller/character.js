@@ -70,6 +70,7 @@ app.core.Object.define("app.controller.Character", {
 						this._setupDirection(state);
 					 	break;
 					case app.event.Object.ALL_STATES.JUMP:
+						this._jump();
 					 	break;
 					case app.event.Object.ALL_STATES.CROUCH:
 					 	break;
@@ -89,7 +90,9 @@ app.core.Object.define("app.controller.Character", {
 		},
 		
 		_jump: function() {
-			
+			$("#" + this._model.id).animate({top: "-=100"}, 500, 'easeOutQuad', function() {
+				$(this).animate({top: "+=100"}, 500, 'easeInQuad');
+			});
 		},
 
 		update: function(model) {
