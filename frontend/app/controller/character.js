@@ -1,8 +1,9 @@
 app.core.Object.define("app.controller.Character", {
     extend: app.controller.Object,
-    constructor: function (model, view, fsm) {
+    constructor: function (model, view, game) {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
-        this.fsm = fsm;
+        this.server = game.server;
+		this.fsm = game.fsm;
 		
 		this._model = model;
 		this._view = view;
@@ -13,6 +14,7 @@ app.core.Object.define("app.controller.Character", {
     member: {
 
 		fsm: null,
+		server: null,
 		
 		characterDOM: null,
 		
@@ -35,9 +37,15 @@ app.core.Object.define("app.controller.Character", {
 			
             var status = this.fsm.requestState(state);
 			if(status = app.controller.Fsm.CHANGE_OK) {
-				
 				//wywolac co trzeba bo stan udalo sie zmienic
-	            
+				
+				console.log("send new state to server");		
+				
+				this.server.send({
+					msg: "state sent",
+					action: state
+				});				
+
 				this.characterDOM.removeClass(prevState);
 				this.characterDOM.addClass(state);
 				
@@ -84,12 +92,12 @@ app.core.Object.define("app.controller.Character", {
                 this._view.addClass(this._model.id, 'left');
                 this._view.removeClass(this._model.id, 'right');
 
-                console.log('CHAR: moving left');
+                //console.log('CHAR: moving left');
             } else {
                 this._view.addClass(this._model.id, 'right');
                 this._view.removeClass(this._model.id, 'left');
 
-                console.log('CHAR: moving right');
+                //console.log('CHAR: moving right');
             }
         }
 	}

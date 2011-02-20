@@ -26,7 +26,7 @@ app.core.Object.define("app.controller.Fsm", {
 		},
 		
 		processQueue: function() {
-			console.log("Queue processing");
+			//console.log("Queue processing");
 			if(this.queue != null) {
 				this.character.runEvent(this.queue);
 				this.queue = null;
@@ -73,20 +73,20 @@ app.core.Object.define("app.controller.Fsm", {
 		},
 		
 		requestState: function(newState) {
-			console.log('FSM: requested state: ' + newState);
+			//console.log('FSM: requested state: ' + newState);
 			if (this.lock) {
 				if(this._states[this.currentState].queueingAllowed) {
-					console.log('FSM: busy, state queued. Current state: ' + this.currentState);
+					//console.log('FSM: busy, state queued. Current state: ' + this.currentState);
 					this.queue = newState;
 					return app.controller.Fsm.QUEUED;							
 				}
 				else {
-					console.log('FSM: busy, no change. Current state: ' + this.currentState);
+					//console.log('FSM: busy, no change. Current state: ' + this.currentState);
 					return app.controller.Fsm.BUSY;					
 				}
 			}
 			
-			console.log('FSM: ok, change. Previous state: ' + this.currentState + ', new state: ' + newState);
+			//console.log('FSM: ok, change. Previous state: ' + this.currentState + ', new state: ' + newState);
 			this._states[newState].activate(this);
 			this.currentState = newState;
 			
@@ -107,15 +107,9 @@ app.core.Object.define("app.controller.Fsm", {
 		},
 		
 		forceState: function(newState) {
-			var prevState = this.character._model.state;
-			
-			console.log("forced state: " + newState);
-			this._states[newState].activate();
-			this.currentState = newState;	
-			this.character._model.state = newState;	
-			
-			this.character.characterDOM.removeClass(prevState);
-			this.character.characterDOM.addClass(newState);				
+			//console.log("forced state: " + newState);
+			this.lock = false;
+			this.character.runEvent(newState);			
 		}
 	}
 });

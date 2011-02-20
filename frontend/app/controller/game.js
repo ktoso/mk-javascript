@@ -18,14 +18,14 @@ app.core.Object.define("app.controller.Game", {
 
 			this.fsm = new app.controller.Fsm(new app.model.Fsm());
 
+			this._initServer();
+
             // create all players
             var playerId = 1
-            this.character = new app.controller.Character(new app.model.Character('character' + playerId), new app.view.Character(), this.fsm);
+            this.character = new app.controller.Character(new app.model.Character('character' + playerId), new app.view.Character(), this);
             this.fsm.setCharacter(this.character);
 
 			this.bindInput();
-			
-			this._initServer();
 		},
 
 		_initServer: function() {
@@ -34,15 +34,8 @@ app.core.Object.define("app.controller.Game", {
 			
 			server.on('connect', function() {
 				console.log("send to server on connect");
-				server.send('hello');
-			});
-			server.on('message', function() {
-				console.log("send to server on message");
-				server.send('msg hello');
-			});			
+			});	
 			this.server = server;
-			
-			
 		},
 
 		bindInput: function() {

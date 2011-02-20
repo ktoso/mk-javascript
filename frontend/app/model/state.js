@@ -24,7 +24,7 @@ app.core.Object.define("app.model.state", {
 			this.active = false;
 			fsm.lock = false;
 			if (fsm.processQueue()) {
-				console.log('no states in queue');
+				//console.log('no states in queue');
 				fsm.forceState(this.nextState);
 			}
 		},
