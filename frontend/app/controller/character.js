@@ -30,6 +30,11 @@ app.core.Object.define("app.controller.Character", {
 			this.characterDOM = $(this.characterDOM);
 			
 			window.setTimeout(this.update.bind(this), 10);	
+			
+			server.on('message', function(data) {
+				runEvent(data.state);
+				console.log("send to server on connect");
+			});				
 		},
 
 		runEvent: function(state) {
