@@ -15,24 +15,43 @@ app.core.Object.define("app.controller.Character", {
 		fsm: null,
 
 		_init: function() {
-			var arenaDiv = document.createElement('div');
-			arenaDiv.className = "character standing";
-            arenaDiv.id = this._model.id;
-			var gameContener = document.getElementById("gamecontainer");
-		                                               
-			gameContener.appendChild(arenaDiv);	
+			var character = document.createElement('div');
+			character.className = "character standing";
+            character.id = this._model.id;
+			var gameContainer = document.getElementById("gamecontainer");
+
+			gameContainer.appendChild(character);
 			
 			window.setTimeout(this.update.bind(this), 10);	
-			console.log("sdfsdfsdfsdf");	
 		},
 
-		runEvent: function(e) {
-            var state = this.fsm.requestState(e);
-			if(app.controller.Fsm.CHANGE_OK) {
-				//wywolac co trzeba bo stan udalo sie zmienic
+		runEvent: function(state) {
+            var status = this.fsm.requestState(state);
+			if(status = app.controller.Fsm.CHANGE_OK) {
 				
-	            this._setupDirection(state);
-	            // sprawdzic w maszynie stanow czy mozna				
+				//wywolac co trzeba bo stan udalo sie zmienic
+	            
+				switch(state) {
+					case app.event.Object.ALL_STATES.DEFAULT:
+					 	break;
+					case app.event.Object.ALL_STATES.LEFT:
+					case app.event.Object.ALL_STATES.RIGHT:
+						this._setupDirection(state);
+						this._move(state);
+					 	break;
+					case app.event.Object.ALL_STATES.JUMP:
+					 	break;
+					case app.event.Object.ALL_STATES.CROUCH:
+					 	break;
+					case app.event.Object.ALL_STATES.HIGH_PUNCH:
+					 	break;
+					case app.event.Object.ALL_STATES.LOW_PUNCH:
+					 	break;
+					case app.event.Object.ALL_STATES.HIGH_KICK:
+					 	break;
+					case app.event.Object.ALL_STATES.LOW_KICK:
+					 	break;	
+				}			
 			};
 
 		},

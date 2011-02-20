@@ -15,7 +15,9 @@ app.core.Object.define("app.event.Object", {
             HIGH_PUNCH: 'highPunch',
             LOW_PUNCH: 'lowPunch',
             HIGH_KICK: 'highKick',
-            LOW_KICK: 'lowKick'
+            LOW_KICK: 'lowKick',
+
+            BEING_HIT: 'beingHit'
         }
     },
     member: {}

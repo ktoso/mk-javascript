@@ -9,7 +9,7 @@ app.core.Object.define("app.model.state.highKick", {
 		
 		lockTime: 1000,
 		
-		possibleTransistions: [
+		possibleTransitions: [
 			'walkRight',
 			'walkLeft',
 			'jump',

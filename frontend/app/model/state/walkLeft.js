@@ -9,7 +9,7 @@ app.core.Object.define("app.model.state.walkLeft", {
 		
 		lockTime: 500,
 		
-		possibleTransistions: [
+		possibleTransitions: [
 			'walkRight',
 			'walkLeft',
 			'jump',

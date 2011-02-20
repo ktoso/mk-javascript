@@ -8,7 +8,8 @@ app.core.Object.define("app.controller.Game", {
 		arena: null,
 		character: null,
 		fsm: null,
-
+		server: null,
+		
 		input: null,
 
 		run: function() {
@@ -23,6 +24,16 @@ app.core.Object.define("app.controller.Game", {
             this.fsm.setCharacter(this.character);
 
 			this.bindInput();
+			
+			this._initServer();
+		},
+
+		_initServer: function() {
+			var server = new io.Socket();
+			server.on('connect', function() {
+				server.send('hello');
+			});
+			this.server = server;
 		},
 
 		bindInput: function() {
@@ -35,7 +46,9 @@ app.core.Object.define("app.controller.Game", {
 			  if(key >= 37 && key <= 40) {event.preventDefault();}
 
 			  scope.input = new app.event.Keyboard(event);
-			  scope.character.runEvent(scope.input.getCode());
+			  var code = scope.input.getCode();
+			  // false if event is not binded to any action
+			  if(code) scope.character.runEvent(code);
 			});
 		},
 	}
