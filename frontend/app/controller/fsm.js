@@ -27,7 +27,7 @@ app.core.Object.define("app.controller.Fsm", {
 		
 		processQueue: function() {
 			console.log("Queue processing");
-			if(this.queue) {
+			if(this.queue != null) {
 				this.character.runEvent(this.queue);
 				this.queue = null;
 				return false;
@@ -107,9 +107,15 @@ app.core.Object.define("app.controller.Fsm", {
 		},
 		
 		forceState: function(newState) {
-			console.log(newState);
+			var prevState = this.character._model.state;
+			
+			console.log("forced state: " + newState);
 			this._states[newState].activate();
-			this.currentState = newState;			
+			this.currentState = newState;	
+			this.character._model.state = newState;	
+			
+			this.character.characterDOM.removeClass(prevState);
+			this.character.characterDOM.addClass(newState);				
 		}
 	}
 });

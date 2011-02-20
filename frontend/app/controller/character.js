@@ -13,31 +13,40 @@ app.core.Object.define("app.controller.Character", {
     member: {
 
 		fsm: null,
-
+		
+		characterDOM: null,
+		
 		_init: function() {
-			var character = document.createElement('div');
-			character.className = "character standing";
-            character.id = this._model.id;
+			this.characterDOM = document.createElement('div');
+			this.characterDOM.className = "character standing";
+            this.characterDOM.id = this._model.id;
 			var gameContainer = document.getElementById("gamecontainer");
 
-			gameContainer.appendChild(character);
+			gameContainer.appendChild(this.characterDOM);
+			
+			// TODO: refactoring
+			this.characterDOM = $(this.characterDOM);
 			
 			window.setTimeout(this.update.bind(this), 10);	
 		},
 
 		runEvent: function(state) {
+			var prevState = this._model.state;
+			
             var status = this.fsm.requestState(state);
 			if(status = app.controller.Fsm.CHANGE_OK) {
 				
 				//wywolac co trzeba bo stan udalo sie zmienic
 	            
+				this.characterDOM.removeClass(prevState);
+				this.characterDOM.addClass(state);
+				
 				switch(state) {
 					case app.event.Object.ALL_STATES.DEFAULT:
 					 	break;
 					case app.event.Object.ALL_STATES.LEFT:
 					case app.event.Object.ALL_STATES.RIGHT:
 						this._setupDirection(state);
-						this._move(state);
 					 	break;
 					case app.event.Object.ALL_STATES.JUMP:
 					 	break;
@@ -53,10 +62,6 @@ app.core.Object.define("app.controller.Character", {
 					 	break;	
 				}			
 			};
-
-		},
-		
-		_move: function() {
 
 		},
 		

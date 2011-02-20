@@ -29,11 +29,20 @@ app.core.Object.define("app.controller.Game", {
 		},
 
 		_initServer: function() {
-			var server = new io.Socket();
+			var server = new io.Socket('192.168.0.114', {port: 3000});
+			server.connect();
+			
 			server.on('connect', function() {
+				console.log("send to server on connect");
 				server.send('hello');
 			});
+			server.on('message', function() {
+				console.log("send to server on message");
+				server.send('msg hello');
+			});			
 			this.server = server;
+			
+			
 		},
 
 		bindInput: function() {
