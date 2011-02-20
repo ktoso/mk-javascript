@@ -41,6 +41,8 @@ app.listen(3000);
 
 var socket = io.listen(app); 
 socket.on('connection', function(client) { 
+    console.log("Client: " + client.sessionId);
+
     var gameEntry = gameObject[client.sessionId] = {};
 
     gameEntry.sessionId = client.sessionId;
@@ -52,15 +54,15 @@ socket.on('connection', function(client) {
     gameEntry.top       = 195; // top
 
     client.on('message', function(data) {
-        console.log("Action: " + data.action + " sessionId: " + client.sessionId);
+        console.log("Action: " + data.action + ", sessionId: " + client.sessionId);
         
         switch (data.action) {
             case 'walkRight':
             case 'walkLeft':
                 gameEntry.direction = data.direction;
                 gameEntry.state     = data.action;
-                gameEntry.left     = data.left;
-                gameEntry.top     = data.top;
+                gameEntry.left      = data.left;
+                gameEntry.top       = data.top;
                 break;
             case 'standing':
                 gameEntry.state = data.action;
@@ -93,6 +95,7 @@ socket.on('connection', function(client) {
     }); 
 
     client.on('disconnect', function(){
+        console.log('disconnected client (sessionId: ' + client.sessionId + ')');
         delete gameObject[client.sessionId];
         client.broadcast({gameObject: gameObject, remove: client.sessionId}); 
     }); 
