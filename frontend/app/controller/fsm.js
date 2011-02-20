@@ -2,12 +2,13 @@ app.core.Object.define("app.controller.Fsm", {
     extend: app.controller.Object,
     constructor: function (model) {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
-        
+
 		this._init();
     },
     static: {
 		BUSY: 1,
 		CHANGE_OK: 2,
+		QUEUED: 3,
 	},
     member: {
 		lock: false,
@@ -18,8 +19,20 @@ app.core.Object.define("app.controller.Fsm", {
 		
 		_states: {},
 		
+		queue: null,
+		
 		setCharacter: function(character) {
 			this.character = character;
+		},
+		
+		processQueue: function() {
+			console.log("Queue processing");
+			if(this.queue) {
+				this.character.runEvent(this.queue);
+				this.queue = null;
+				return false;
+			}
+			return true;
 		},
 		
 		_loadStates: function() {
@@ -62,8 +75,15 @@ app.core.Object.define("app.controller.Fsm", {
 		requestState: function(newState) {
 			console.log('FSM: requested state: ' + newState);
 			if (this.lock) {
-				console.log('FSM: busy, no change. Current state: ' + this.currentState);
-				return app.controller.Fsm.BUSY;
+				if(this._states[this.currentState].queueingAllowed) {
+					console.log('FSM: busy, state queued. Current state: ' + this.currentState);
+					this.queue = newState;
+					return app.controller.Fsm.QUEUED;							
+				}
+				else {
+					console.log('FSM: busy, no change. Current state: ' + this.currentState);
+					return app.controller.Fsm.BUSY;					
+				}
 			}
 			
 			console.log('FSM: ok, change. Previous state: ' + this.currentState + ', new state: ' + newState);

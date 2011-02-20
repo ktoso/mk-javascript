@@ -23,7 +23,7 @@ app.core.Object.define("app.model.state", {
 		deactivate: function(fsm) {
 			this.active = false;
 			fsm.lock = false;
-			app.controller.Fsm.prototype.forceState.bind(fsm, this.nextState);
+			if(fsm.processQueue()) app.controller.Fsm.prototype.forceState.bind(fsm, this.nextState);
 		},
 		
 		playSound: function() {

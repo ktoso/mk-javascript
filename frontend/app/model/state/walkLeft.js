@@ -7,7 +7,7 @@ app.core.Object.define("app.model.state.walkLeft", {
     member: {
 		state: "walkLeft",
 		
-		lockTime: 0,
+		lockTime: 500,
 		
 		possibleTransistions: [
 			'walkRight',
