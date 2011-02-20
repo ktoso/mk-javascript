@@ -38,6 +38,8 @@ app.core.Object.define("app.event.Keyboard", {
                 case 65:
                     eventCode = app.event.Object.ALL_STATES.LOW_KICK;
                     break; 
+				default:
+                    break; 					
             }
 
             this._eventCode = eventCode;  

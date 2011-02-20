@@ -30,9 +30,10 @@ app.core.Object.define("app.controller.Game", {
 
 		_initServer: function() {
 			var server = new io.Socket();
-			socket.on('connect', function() {
-				socket.send('hello');
+			server.on('connect', function() {
+				server.send('hello');
 			});
+			this.server = server;
 		},
 
 		bindInput: function() {
