@@ -30,24 +30,24 @@ app.core.Object.define("app.controller.Character", {
 				//wywolac co trzeba bo stan udalo sie zmienic
 	            
 				switch(state) {
-					case app.event.Object.DEFAULT:
+					case app.event.Object.ALL_STATES.DEFAULT:
 					 	break;
-					case app.event.Object.LEFT:
-					case app.event.Object.RIGHT:
+					case app.event.Object.ALL_STATES.LEFT:
+					case app.event.Object.ALL_STATES.RIGHT:
 						this._setupDirection(state);
 						this._move(state);
 					 	break;
-					case app.event.Object.JUMP:
+					case app.event.Object.ALL_STATES.JUMP:
 					 	break;
-					case app.event.Object.CROUCH:
+					case app.event.Object.ALL_STATES.CROUCH:
 					 	break;
-					case app.event.Object.HIGH_PUNCH:
+					case app.event.Object.ALL_STATES.HIGH_PUNCH:
 					 	break;
-					case app.event.Object.LOW_PUNCH:
+					case app.event.Object.ALL_STATES.LOW_PUNCH:
 					 	break;
-					case app.event.Object.HIGH_KICK:
+					case app.event.Object.ALL_STATES.HIGH_KICK:
 					 	break;
-					case app.event.Object.LOW_KICK:
+					case app.event.Object.ALL_STATES.LOW_KICK:
 					 	break;	
 				}			
 			};
