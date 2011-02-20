@@ -1,12 +1,21 @@
 app.core.Object.define("app.model.Character", {
     extend: app.model.Object,
-    constructor: function (id)
+    constructor: function (id, remote)
     {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
         this.id = id;
+		this.remote = remote;
+		
+		if(this.remote)
+		{
+			this.posX = 600;
+			this.directionLeft = false;
+		}
     },
     static: {},
     member: {
+		remote;
+		
         id: null,
 
         health: 100,
