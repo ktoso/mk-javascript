@@ -15,15 +15,23 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     position: absolute;
     background-repeat: no-repeat;
     top: 195px;
-    left: 30px;
 
     -webkit-animation-duration: 1s;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
 }
 
+.local {
+	left: 30px;
+}
+
+.remote {
+    left: 550px;		
+}
+
 .left{
     -webkit-transform: scaleX(-1) translate(-0px, 0);
+}
 
 .animated {
     -webkit-animation-duration: 1s;

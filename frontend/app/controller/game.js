@@ -23,11 +23,11 @@ app.core.Object.define("app.controller.Game", {
             var playerId = 1
 
             var fsm = new app.controller.Fsm(new app.model.Fsm());
-            this.character = new app.controller.Character(new app.model.Character('character' + playerId++), new app.view.Character(), this, fsm);
+            this.character = new app.controller.Character(new app.model.Character('character' + playerId++, false), new app.view.Character(), this, fsm, false);
             fsm.setCharacter(this.character);
 
             var fsm2 = new app.controller.Fsm(new app.model.Fsm());
-            this.character2 = new app.controller.Character(new app.model.Character('character' + playerId++), new app.view.Character(), this, fsm2);
+            this.character2 = new app.controller.Character(new app.model.Character('character' + playerId++, true), new app.view.Character(), this, fsm2, true);
             fsm2.setCharacter(this.character2);
 
 

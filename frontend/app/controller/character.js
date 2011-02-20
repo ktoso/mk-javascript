@@ -23,6 +23,8 @@ app.core.Object.define("app.controller.Character", {
 		_init: function() {
 			this.characterDOM = document.createElement('div');
 			this.characterDOM.className = "character standing";
+			if(this.remote) this.characterDOM.className += " remote left";
+			else {this.characterDOM.className += " local";}
             this.characterDOM.id = this._model.id;
 			var gameContainer = document.getElementById("gamecontainer");
 
@@ -33,10 +35,14 @@ app.core.Object.define("app.controller.Character", {
 			
 			window.setTimeout(this.update.bind(this), 10);	
 			
-			this.server.on('message', function(data) {
-				this.runEvent(data.state);
-				console.log("send to server on connect");
-			});				
+			if (this.remote) {
+				var character = this;
+				this.server.on('message', function(data){
+					character.runEvent(data.gameObject.state);
+					console.log("recieved from server");
+					console.log(data);
+				});
+			}			
 		},
 
 		runEvent: function(state) {

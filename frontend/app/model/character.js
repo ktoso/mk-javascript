@@ -8,7 +8,7 @@ app.core.Object.define("app.model.Character", {
 		
 		if(this.remote)
 		{
-			this.posX = 600;
+			this.posX = 550;
 			this.directionLeft = false;
 		}
     },
