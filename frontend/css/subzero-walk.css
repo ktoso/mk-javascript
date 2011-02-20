@@ -1,7 +1,8 @@
 .walkRight, .walkLeft {
-    -webkit-animation-name: 'subzero-walk-step-key';
-    -webkit-animation-timing-function: step-start;
-
+   /* -webkit-animation-name: 'subzero-walk-step-key';
+    -webkit-animation-timing-function: step-start;*/
+    -webkit-animation-name: 'subzero-walk-linear-key'; 
+    -webkit-animation-timing-function: linear;
     width: 73px;
     height: 141px;
 	
