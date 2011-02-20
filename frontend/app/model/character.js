@@ -14,7 +14,7 @@ app.core.Object.define("app.model.Character", {
     },
     static: {},
     member: {
-		remote;
+		remote: false;
 		
         id: null,
 
