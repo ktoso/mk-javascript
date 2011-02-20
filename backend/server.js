@@ -90,7 +90,7 @@ socket.on('connection', function(client) {
                client.send({gameObject: gameObject, sessionId: client.sessionId}); 
                break;
         }
-        client.broadcast({gameObject: gameObject}); 
+        client.broadcast({gameObject: gameEntry});
 
     }); 
 
