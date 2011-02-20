@@ -1,12 +1,13 @@
 app.core.Object.define("app.controller.Character", {
     extend: app.controller.Object,
-    constructor: function (model, view, game, fsm) {
+    constructor: function (model, view, game, fsm, remote) {
         arguments.callee.prototype.uper.apply(this, arguments); //call parent constructor
         this.server = game.server;
 		this.fsm = fsm;
 		
 		this._model = model;
 		this._view = view;
+        this.remote = remote;
 		
 		this._init();
     },
@@ -15,6 +16,7 @@ app.core.Object.define("app.controller.Character", {
 
 		fsm: null,
 		server: null,
+        remote: false,
 		
 		characterDOM: null,
 		
