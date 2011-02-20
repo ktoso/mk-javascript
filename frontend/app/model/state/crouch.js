@@ -9,7 +9,7 @@ app.core.Object.define("app.model.state.crouch", {
 		
 		lockTime: 2000,
 		
-		possibleTransistions: [
+		possibleTransitions: [
 			'walkRight',
 			'walkLeft',
 			//'jump',

@@ -9,7 +9,7 @@ app.core.Object.define("app.model.state.beingHit", {
 		
 		lockTime: 0,
 		
-		possibleTransistions: [
+		possibleTransitions: [
 			'walkRight',
 			'walkLeft',
 			'jump',
