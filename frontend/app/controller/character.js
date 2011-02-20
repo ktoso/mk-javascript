@@ -30,6 +30,11 @@ app.core.Object.define("app.controller.Character", {
 			this.characterDOM = $(this.characterDOM);
 			
 			window.setTimeout(this.update.bind(this), 10);	
+			
+			server.on('message', function(data) {
+				runEvent(data.state);
+				console.log("send to server on connect");
+			});				
 		},
 
 		runEvent: function(state) {
@@ -67,7 +72,9 @@ app.core.Object.define("app.controller.Character", {
 					case app.event.Object.ALL_STATES.HIGH_KICK:
 					 	break;
 					case app.event.Object.ALL_STATES.LOW_KICK:
-					 	break;	
+					 	break;
+                    case app.event.Object.ALL_STATES.BEING_HIT:
+					 	break;
 				}			
 			};
 

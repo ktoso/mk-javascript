@@ -75,7 +75,7 @@ socket.on('connection', function(client) {
                         var entry = gameObject[sid];
 
                         if (Math.abs(data.left - entry.left) < 70 && sid != client.sessionId) {
-                            entry.state = "beinghit"; 
+                            entry.state = "beinghit";
                             entry.health -= 10;
 
                             setTimeout(function (entr) {
