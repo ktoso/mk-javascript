@@ -7,7 +7,7 @@ app.core.Object.define("app.controller.Game", {
     member: {
 		arena: null,
 		character: null,
-		fsm: null,
+        character2: null,
 		server: null,
 		
 		input: null,
@@ -16,14 +16,20 @@ app.core.Object.define("app.controller.Game", {
 			this.arena = new app.controller.Arena(new app.model.Arena(), new app.view.Arena());
 			this.arena.drawBackground();
 
-			this.fsm = new app.controller.Fsm(new app.model.Fsm());
+            this._initServer();
 
-			this._initServer();
 
             // create all players
             var playerId = 1
-            this.character = new app.controller.Character(new app.model.Character('character' + playerId), new app.view.Character(), this);
-            this.fsm.setCharacter(this.character);
+
+            var fsm = new app.controller.Fsm(new app.model.Fsm());
+            this.character = new app.controller.Character(new app.model.Character('character' + playerId++), new app.view.Character(), this);
+            fsm.setCharacter(this.character);
+
+            var fsm2 = new app.controller.Fsm(new app.model.Fsm());
+            this.character2 = new app.controller.Character(new app.model.Character('character' + playerId++), new app.view.Character(), this);
+            fsm2.setCharacter(this.character2);
+
 
 			this.bindInput();
 		},
@@ -52,6 +58,6 @@ app.core.Object.define("app.controller.Game", {
 			  // false if event is not binded to any action
 			  if(code) scope.character.runEvent(code);
 			});
-		},
+		}
 	}
 });

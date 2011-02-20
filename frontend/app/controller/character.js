@@ -27,7 +27,7 @@ app.core.Object.define("app.controller.Character", {
 			gameContainer.appendChild(this.characterDOM);
 			
 			// TODO: refactoring
-			this.characterDOM = $(this.characterDOM);
+			this.characterDOM = $(this.characterDOM); // TODO fixme
 			
 			window.setTimeout(this.update.bind(this), 10);	
 			
